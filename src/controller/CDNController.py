@@ -18,3 +18,10 @@ def create():
             return {"link": response}, 200
         else:
             return {}, 500
+
+@bp.route("/<name>", methods=["GET"])
+def read(name: str):
+    response = service.read(name=name)
+    if response != False:
+        return flask.send_file(response, mimetype='image/gif')
+    return {}, 400
