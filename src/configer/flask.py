@@ -7,7 +7,6 @@ class Config:
     Parent configuration, which is commom in others configurations.
     """
     SQLALCHEMY_ECHO = True
-    UPLOAD_FOLDER = "uploads"
 
 
 class DevConfig(Config):
@@ -20,6 +19,7 @@ class DevConfig(Config):
     FLASK_ENV = "development"
     FLASK_DEBUG = True
     TESTING = True
+    MONGO_URI = "mongodb://127.0.0.1:27017/CDN_dev"
 
 
 class ProdConfig(Config):
@@ -32,6 +32,7 @@ class ProdConfig(Config):
     FLASK_ENV = "production"
     FLASK_DEBUG = False
     TESTING = False
+    MONGO_URI = "mongodb://127.0.0.1:27017/CDN"
 
 
 configs = {"dev": DevConfig, "prod": ProdConfig}
