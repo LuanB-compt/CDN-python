@@ -2,6 +2,7 @@ from src.repository.CDNRepository import CDNRepository
 from src.models.CDN import CDN
 from datetime import datetime
 from werkzeug.datastructures.file_storage import FileStorage
+import os
 import secrets
 
 class CDNService():
@@ -35,8 +36,9 @@ class CDNService():
             print(e)
             return False
         
-    def read(self, _id, link: str) -> bool:
-        pass
+    def read(self, name: str) -> str or False:
+        response: str = self.__repository.read(name=name)
+        return os.path.abspath(response)
 
     def update(self, _id, link: str) -> bool:
         pass
