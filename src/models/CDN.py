@@ -8,9 +8,9 @@ class CDN():
 
     def __init__(self, name: str):
         self.name = name.rsplit(sep='.', maxsplit=1)[0]
-        self.path = f'./data/imgs/img_{name}'
+        self.path = f'./data/img/{name}'
         self.link = f'http:localhost:5000/{self.name}'
-        self.createAt = datetime.now()
+        self.createAt = str(datetime.now())
 
     def __dict__(self) -> dict:
         return {
