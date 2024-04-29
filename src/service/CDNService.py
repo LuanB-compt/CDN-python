@@ -33,12 +33,13 @@ class CDNService():
             response = self.__repository.create(new=new)
             return new.link
         except Exception as e:
-            print(e)
             return False
         
     def read(self, name: str) -> str or False:
-        response: str = self.__repository.read(name=name)
-        return os.path.abspath(response)
+        response: str or False = self.__repository.read(name=name)
+        if (response != False):
+            return os.path.abspath(response)
+        return False
 
     def update(self, _id, link: str) -> bool:
         pass

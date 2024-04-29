@@ -13,8 +13,11 @@ class CDNRepository():
             return False
 
     def read(self, name: str) -> str or False:
-        response = mongo_client.db.todos.find_one(filter={"name": name})
-        return response['path']
+        try:
+            response = mongo_client.db.todos.find_one(filter={"name": name})
+            return response['path']
+        except Exception as e:
+            return False
 
     def update(self, _id, link: str) -> CDN:
         pass
